@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue 2.x介绍</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <h1>声明式渲染</h1>
+    <div id="app">
+        {{message}}
+    </div>
+    <div id="app1">
+        <span :title="message">
+            鼠标悬停查看信息
+        </span>
+    </div>
+    <hr>
+    <h1>条件与循环</h1>
+    <div id="app2">
+        <span v-if="seen">{{message}}</span>
+    </div>
+    <div id="app3">
+        <ul v-for="item in nameList">
+            <li>{{item}}</li>
+        </ul>
+    </div>
+    <h1>处理用户输入</h1>
+    <div id="app4">
+        <span>{{message}}</span>
+        <input type="text" v-model="message"/>
+        <button v-on:click="reverse">反转字符串</button>
+    </div>
+    <h1>组件化应用构筑</h1>
+    <div id="app5">
+        <ul v-for="item in itemList">
+            <todo-item :todo="item"></todo-item>
+        </ul>
+    </div>
+</body>
+<script>
+    Vue.component("todo-item",{
+        props:["todo"],
+        template:"<li>{{todo}}</li>"
+    })
+    var app = new Vue({
+        el: "#app",
+        data: {
+            message: "hello world"
+        }
+    })
+    var app1 = new Vue({
+        el: "#app1",
+        data: {
+            message: "aaa"
+        }
+    })
+    var app3 = new Vue({
+        el:"#app2",
+        data: {
+            seen: true,
+            message:"你看见我了"
+        }
+    })
+    var app4 = new Vue({
+        el: "#app3",
+        data: {
+            nameList:["a", "b", "c"]
+        }
+    })
+    var app4 = new Vue({
+        el: "#app3",
+        data: {
+            nameList:["a", "b", "c"]
+        }
+    })
+    var app5 = new Vue({
+        el:"#app4",
+        data: {
+            message: "abcdefg1234567890"
+        },
+        methods:{
+            reverse: function(){
+                this.message = this.message.split("").reverse().join("")
+            }
+        }
+    })
+    var app6 = new Vue({
+        el:"#app5",
+        data:{
+            itemList:['a','b','c','d','e']
+        }
+    })
+</script>
+</html>

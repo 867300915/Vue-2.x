@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>Vue 实例</title>
+</head>
+<body>
+    <h1>生命周期</h1>
+    <ul>
+        <li>init(Event&lifecycle)</li>
+        <li>beforeCreate()</li>
+        <li>init(injections&reactivity)</li>
+        <li>created()</li>
+        <li>beforeMount()</li>
+        <li>create vm.$el</li>
+        <li>mounted()</li>
+        <li>Mounted</li>
+        <li>beforeUpdate()</li>
+        <li>update()</li>
+        <li>mounted</li>
+        <li>beforeDestroy()</li>
+        <li>destroyed()</li>
+        <li>Destoryed</li>
+    </ul>
+    <img src="./lifecycle.png" alt="">
+    <script>
+        var vue = new Vue({
+            data:{
+                discrption:"Vue 实例观察的数据对象。Vue 实例代理了对其 data 对象 property 的访问。"
+            },
+            props:{
+                discrption:"当前组件接收到的 props 对象。Vue 实例代理了对其 props 对象 property 的访问。"
+            },
+            el:"Vue 实例使用的根 DOM 元素。",
+            customOption: "foo",//自定义属性
+            created: function () {
+                var $parent = vm.$parent // 父实例，如果当前实例有的话。
+                var $children = vm.$children // 当前实例的直接子组件。需要注意 $children 并不保证顺序，也不是响应式的。如果你发现自己正在尝试使用 $children 来进行数据绑定，考虑使用一个数组配合 v-for 来生成子组件，并且使用 Array 作为真正的来源。
+                var $root = vm.$root // 当前组件树的根 Vue 实例。如果当前实例没有父实例，此实例将会是其自己。
+                console.log(this.$options.customOption) // => 'foo'
+            }
+        })
+    </script>
+</body>
+</html>

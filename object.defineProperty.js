@@ -14,7 +14,7 @@ get：目标属性获取值的方法    　
  */
 var obj = {}
 Object.defineProperty(obj, "name", {
-    value: "test"
+    value: "test" 
 })
 
 /**

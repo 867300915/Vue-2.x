@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <h1 v-if="awesome">Vue is awesome!</h1>
+        <h1 v-else>Oh no 😢</h1>
+        <hr>
+        <template v-if="ok">
+            <h1>Title</h1>
+            <p>Paragraph 1</p>
+            <p>Paragraph 2</p>
+        </template>
+        <hr>
+        <div v-if="type === 'A'">
+        A
+        </div>
+        <div v-else-if="type === 'B'">
+        B
+        </div>
+        <div v-else-if="type === 'C'">
+        C
+        </div>
+        <div v-else>
+        Not A/B/C
+        </div>
+        <hr>
+        <template v-if="loginType === 'username'">
+            <label>Username</label>
+            <input placeholder="Enter your username" key="username-input">
+        </template>
+        <template v-else>
+            <label>Email</label>
+            <input placeholder="Enter your email address" key="email-input">
+        </template>
+        <button @click="switchType">switch type</button>
+        <hr>
+        <h1 v-show="ok1">Hello!</h1>
+    </div>
+</body>
+<script>
+    var app = new Vue({
+        el:"#app",
+        data:{
+            awesome: false,
+            ok:true,
+            type: 'C',
+            loginType: '',
+            ok1:false
+        },
+        methods:{
+            switchType:function(){
+                if(this.loginType){
+                    this.loginType = ""
+                }else{
+                    this.loginType = "username"
+                }
+            }
+        }
+    })
+</script>
+</html>

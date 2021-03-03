@@ -4,9 +4,23 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>Class 与 Style 绑定</title>
 </head>
 <body>
-    
+    <div id="example">
+        <div class="static" v-bind:class="{ active: isActive, 'text-danger': hasError }"></div>
+        <div class="static" v-bind:class=classObj></div>
+    </div>
 </body>
+<script>
+    var vm = new Vue({
+        el:"#example",
+        data:{
+            isActive: true,
+            hasError:true,
+            classObj: 
+        }
+    })
+</script>
 </html>

@@ -74,7 +74,7 @@ var vm3 = new Vue({
         answer:"i will give you answer"
     },
     watch:{
-        question:function(new,old){
+        question:function(newValue,oldValue){
             this.answer = "waiting for you to stop typing....",
             this.dewbounceGetAnswer()
         }

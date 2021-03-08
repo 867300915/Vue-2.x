@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>列表渲染</title>
+</head>
+<body>
+    <div id="app">
+        <ul>
+            <li v-for="(item, index) in heroList">
+                {{ index }} - {{ item }}
+            </li>
+        </ul>
+        <hr>
+        <ul>
+            <li v-for="(value, name, index) in heroObj">
+                {{index}} . {{name}} : {{value}}
+            </li>
+        </ul>
+    </div>
+</body>
+<script>
+    var app = new Vue({
+        el: "#app",
+        data:{
+            heroList:[
+                "hero1",
+                "hero2",
+                "hero3",
+                "hero4"
+            ],
+            heroObj:{
+                title: 'How to do lists in Vue',
+                author: 'Jane Doe',
+                publishedAt: '2016-04-10'
+            }
+        }
+    })
+</script>
+</html>
